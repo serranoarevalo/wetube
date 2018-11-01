@@ -10,6 +10,6 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Router
     - [x] MVC
     - [x] Mustache Templates
-    - [ ] MongoDB Connection
+    - [x] MongoDB Connection
     - [ ] Mongo Schemas
     - [ ] Pre Save Hooks
