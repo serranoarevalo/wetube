@@ -5,9 +5,11 @@ Youtube Clone built on VanillaJS and NodeJS
 ## Server: To Do:
 
     - [x] ES6
-    - [ ] Express Server
-    - [ ] Router
-    - [ ] Pug Templates
+    - [x] Express Server
+    - [x] Middlewares
+    - [x] Router
+    - [x] MVC
+    - [ ] Mustache Templates
     - [ ] MongoDB Connectiong
     - [ ] Mongo Schemas
     - [ ] Pre Save Hooks
