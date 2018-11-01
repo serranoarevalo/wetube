@@ -1,0 +1,3 @@
+<header>
+    <h1>Hi {{message}}</h1>
+</header>

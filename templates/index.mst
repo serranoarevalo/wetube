@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    {{ message}}
+    {{> header }}
+    {{ message}} lal
 </body>
 
 </html>

@@ -9,7 +9,7 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Middlewares
     - [x] Router
     - [x] MVC
-    - [ ] Mustache Templates
-    - [ ] MongoDB Connectiong
+    - [x] Mustache Templates
+    - [ ] MongoDB Connection
     - [ ] Mongo Schemas
     - [ ] Pre Save Hooks
