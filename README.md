@@ -2,7 +2,9 @@
 
 Youtube Clone built on VanillaJS and NodeJS
 
-## Server: To Do:
+## To Do:
+
+### Setup:
 
     - [x] ES6
     - [x] Express Server
