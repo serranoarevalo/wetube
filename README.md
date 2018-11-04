@@ -11,7 +11,7 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Middlewares
     - [x] Router
     - [x] MVC
-    - [x] Mustache Templates
+    - [x] Pug Templates
     - [x] MongoDB Connection
-    - [ ] Mongo Schemas
-    - [ ] Pre Save Hooks
+    - [ ] Webpack ES6 + SaSS
+    - [ ] Webpack Dev Server
