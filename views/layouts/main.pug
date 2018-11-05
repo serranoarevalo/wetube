@@ -2,7 +2,9 @@ doctype html
 html
     head
         title #{title} | #{siteName}
+        link(rel='stylesheet', href='styles.css')
     body
         include ../partials/header
         block content
         include ../partials/footer
+        script(src="main.js")

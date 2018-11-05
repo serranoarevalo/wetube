@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.1.0",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.0-beta.6",
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "css-loader": "^1.0.1",
@@ -40,6 +41,6 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js -e js,pug --ignore static/",
     "dev:assets": "webpack -w",
-    "dev": "concurrently 'yarn dev:server' 'yarn dev:assets' --names 'Server,Assets' --prefix name"
+    "dev": "WEBPACK_ENV=development concurrently 'yarn dev:server' 'yarn dev:assets' --names 'Server,Assets' --prefix name"
   }
 }

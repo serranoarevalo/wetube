@@ -2,14 +2,15 @@ const path = require("path");
 const ExtractCSS = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
-const ENTRY = path.resolve(__dirname, "static", "js", "index.js");
+const ENTRY = path.resolve(__dirname, "assets", "js", "index.js");
+const WEBPACK_ENV = process.env.WEBPACK_ENV;
 
 const config = {
-  entry: ENTRY,
-  mode: "production",
+  entry: ["babel-polyfill", ENTRY],
+  mode: WEBPACK_ENV,
   output: {
-    path: path.resolve(__dirname, "static", "dist"),
-    filename: "[name].bundle.js"
+    path: path.resolve(__dirname, "static"),
+    filename: "[name].js"
   },
   module: {
     rules: [
@@ -42,7 +43,7 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              data: `@import 'static/css/config/_variables.scss';`
+              data: `@import 'assets/css/config/_variables.scss';`
             }
           }
         ])
