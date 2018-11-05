@@ -1,6 +1,6 @@
 .header {
   background-color: $red;
-  padding: 3px 20px;
+  padding: 5px 20px;
   svg {
     fill: $grey;
   }
@@ -25,7 +25,7 @@
       input {
         font-weight: 300;
         all: unset;
-        padding: 7px 10px;
+        padding: 8px 10px;
         width: 100%;
         padding-left: 35px;
         &::placeholder {
@@ -48,6 +48,12 @@
     .header__column:last-child {
       justify-self: end;
       font-weight: 300;
+      a {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 12px;
+        color: white;
+      }
     }
   }
 }

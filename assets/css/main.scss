@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
+html,
+body {
+  height: 100%;
+}
 body {
   background-color: #f5f5f5;
   color: $black;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
+}
+
+main {
+  min-height: 80%;
 }
