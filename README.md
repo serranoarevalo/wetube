@@ -13,5 +13,5 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] MVC
     - [x] Pug Templates
     - [x] MongoDB Connection
-    - [ ] Webpack ES6 + SaSS
-    - [ ] Webpack Dev Server
+    - [x] Webpack ES6 + SaSS
+    - [ ] Styles!

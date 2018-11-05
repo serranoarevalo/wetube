@@ -39,7 +39,7 @@
     "nodemon": "^1.18.5"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js -e js,pug --ignore static/",
+    "dev:server": "nodemon --exec babel-node init.js --ignore assets/",
     "dev:assets": "webpack -w",
     "dev": "WEBPACK_ENV=development concurrently 'yarn dev:server' 'yarn dev:assets' --names 'Server,Assets' --prefix name"
   }
