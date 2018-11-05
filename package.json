@@ -30,10 +30,12 @@
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
+    "concurrently": "^4.0.1",
     "nodemon": "^1.18.5"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node init.js -e js,pug",
-    "webpack": "webpack"
+    "dev:server": "nodemon --exec babel-node init.js -e js,pug --ignore static/",
+    "dev:assets": "webpack -w",
+    "dev": "concurrently 'yarn dev:server' 'yarn dev:assets' --names 'Server,Assets' --prefix name"
   }
 }

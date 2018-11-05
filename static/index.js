@@ -1,1 +1,2 @@
-const sayHi = async () => console.log("hi");
+const sayHi = async () => console.log("hello");
+sayHi();
