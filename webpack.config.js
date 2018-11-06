@@ -43,7 +43,7 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              data: `@import 'assets/css/config/_variables.scss';`
+              data: `@import 'assets/css/config/_variables.scss';@import 'assets/css/config/_mixins.scss';`
             }
           }
         ])

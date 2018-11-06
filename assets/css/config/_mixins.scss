@@ -1,0 +1,9 @@
+@mixin userAvatar {
+  height: 50px;
+  min-width: 50px;
+  width: 50px;
+  background-color: $black;
+  margin-right: 25px;
+  background-size: cover;
+  background-position: center center;
+}

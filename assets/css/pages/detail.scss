@@ -1,6 +1,50 @@
 @import "./partials/smallVideo.scss";
+@import "./partials/comment.scss";
 .detail {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 50px;
+  margin-bottom: 50px;
+  .detail__main {
+    .video-player {
+      width: 100%;
+      height: 500px;
+      background-color: $black;
+      margin-bottom: 50px;
+    }
+    .video__title {
+      font-weight: 400;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .video__views {
+      font-size: 18px;
+      font-weight: 300;
+    }
+    .comments {
+      margin-top: 50px;
+      .comments__count {
+        font-size: 18px;
+      }
+      .comments__form {
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        margin-top: 25px;
+        padding-top: 25px;
+        display: flex;
+        margin-bottom: 50px;
+        .comments__user {
+          @include userAvatar;
+        }
+        .comments__textarea {
+          height: 50px;
+          background-color: transparent;
+          width: 100%;
+          resize: none;
+          font-size: 18px;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
 }

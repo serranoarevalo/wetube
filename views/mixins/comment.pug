@@ -1,0 +1,8 @@
+mixin comment(comment = {})
+    li.comment
+        .comment__user-avatar
+        .comment__user-data
+            .comment__title
+                span.comment__username= comment.username
+                span.comment__timestamp= comment.timestamp
+            p.comment__content= comment.content

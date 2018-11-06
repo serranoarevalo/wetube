@@ -1,0 +1,20 @@
+li.comment {
+  display: flex;
+  .comment__user-avatar {
+    @include userAvatar;
+  }
+  .comment__user-data {
+    .comment__title {
+      margin-bottom: 10px;
+      .comment__username {
+        font-weight: 700;
+        margin-right: 10px;
+      }
+      .comment__timestamp {
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 12px;
+      }
+    }
+  }
+}
