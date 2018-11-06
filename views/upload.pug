@@ -1,4 +1,8 @@
 extends layouts/main
 
 block content
-    h1 Hi
+    .upload-video
+        form.upload-video__form(action="/upload")
+            input(type="text", placeholder="Title", name='title')
+            textarea(placeholder="Description", name='email')
+            input(type="submit", value="Update Video")

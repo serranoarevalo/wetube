@@ -1,0 +1,17 @@
+.upload-video {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .upload-video__form {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    textarea,
+    input {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+}
