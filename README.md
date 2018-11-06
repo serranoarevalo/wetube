@@ -14,4 +14,14 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Pug Templates
     - [x] MongoDB Connection
     - [x] Webpack ES6 + SaSS
-    - [ ] Styles!
+
+### CSS:
+
+    - [x] Home
+    - [x] Video Detail
+    - [ ] Video Search Results
+    - [ ] User Detail
+    - [ ] Edit Profile
+    - [ ] Login
+    - [ ] Upload
+    - [ ] Edit Video

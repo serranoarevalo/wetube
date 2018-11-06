@@ -1,0 +1,19 @@
+.search {
+  min-height: 70vh;
+  .search__header {
+    text-align: center;
+    font-size: 22px;
+    .term {
+      color: $red;
+    }
+  }
+  .search__results {
+    margin: 60px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 50px;
+    .main-video {
+      height: 200px;
+    }
+  }
+}

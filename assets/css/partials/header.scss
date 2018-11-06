@@ -23,15 +23,18 @@
       background-color: white;
       position: relative;
       border-radius: 5px;
-      input {
-        font-weight: 300;
-        all: unset;
-        padding: 8px 10px;
+      form {
         width: 100%;
-        padding-left: 35px;
-        &::placeholder {
-          color: $black;
+        input {
           font-weight: 300;
+          all: unset;
+          padding: 8px 10px;
+          width: 100%;
+          padding-left: 35px;
+          &::placeholder {
+            color: $black;
+            font-weight: 300;
+          }
         }
       }
       .search__icon {

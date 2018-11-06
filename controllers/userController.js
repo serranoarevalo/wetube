@@ -7,7 +7,7 @@ const editProfile = (req, res) => {
 };
 
 const myProfile = (req, res) => {
-  res.render("me", { title: "Your Profile" });
+  res.render("user", { title: "Your Profile" });
 };
 
 const logIn = (req, res) => {
