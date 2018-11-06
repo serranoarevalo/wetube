@@ -20,7 +20,7 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Home
     - [x] Video Detail
     - [x] Video Search Results
-    - [ ] Login
+    - [x] Login
     - [ ] User Detail
     - [ ] Edit Profile
     - [ ] Upload

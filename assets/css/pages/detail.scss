@@ -33,6 +33,7 @@
         display: flex;
         margin-bottom: 50px;
         .comments__user {
+          margin-right: 25px;
           @include userAvatar;
         }
         .comments__textarea {

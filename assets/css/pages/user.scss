@@ -1,0 +1,19 @@
+.user {
+  .user__profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 75px;
+    .user__avatar {
+      @include userAvatar;
+      margin-bottom: 20px;
+    }
+  }
+  .user__uploaded-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    .main-video {
+      height: 200px;
+    }
+  }
+}

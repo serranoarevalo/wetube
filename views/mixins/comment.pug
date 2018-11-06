@@ -1,6 +1,7 @@
 mixin comment(comment = {})
     li.comment
-        .comment__user-avatar
+        a(href=`/user/${comment.authorId}`)
+            .comment__user-avatar
         .comment__user-data
             .comment__title
                 span.comment__username= comment.username

@@ -2,6 +2,7 @@ li.comment {
   display: flex;
   .comment__user-avatar {
     @include userAvatar;
+    margin-right: 25px;
   }
   .comment__user-data {
     .comment__title {
