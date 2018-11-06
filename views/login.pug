@@ -1,4 +1,8 @@
 extends layouts/main
 
 block content
-    h1 Hi
+    .login
+        form.login__form(action="/login")
+            input.login__input(type="text", placeholder="Email", required=true)
+            input.login__input(type="password", placeholder="Password", required=true)
+            input.login__btn(type="submit", value="Submit")

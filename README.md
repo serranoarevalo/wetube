@@ -19,9 +19,9 @@ Youtube Clone built on VanillaJS and NodeJS
 
     - [x] Home
     - [x] Video Detail
-    - [ ] Video Search Results
+    - [x] Video Search Results
+    - [ ] Login
     - [ ] User Detail
     - [ ] Edit Profile
-    - [ ] Login
     - [ ] Upload
     - [ ] Edit Video

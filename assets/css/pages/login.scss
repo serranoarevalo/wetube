@@ -1,0 +1,14 @@
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    .login__input {
+      margin-bottom: 15px;
+    }
+  }
+}

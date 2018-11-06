@@ -36,8 +36,8 @@
           @include userAvatar;
         }
         .comments__textarea {
+          border: 0;
           height: 50px;
-          background-color: transparent;
           width: 100%;
           resize: none;
           font-size: 18px;
