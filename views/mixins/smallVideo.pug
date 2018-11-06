@@ -1,0 +1,11 @@
+mixin smallVideo(video = {})
+    .small-video
+        a(href=`/video/${video.id}`)
+            .small-video__thumbnail(style={'background-image':`url(${video.thumbnail})`})
+            .small-video__data
+                h3.small-video__title= video.title
+                if video.views === 1
+                    span.small-video__views #{video.views} view
+                else
+                    span.small-video__views #{video.views} views
+                span.small-video__author By #{video.author}

@@ -1,0 +1,30 @@
+.small-video {
+  a {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100px;
+    place-items: center start;
+    grid-gap: 20px;
+  }
+  .small-video__thumbnail {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+  .small-video__data {
+    .small-video__title {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .small-video__views {
+      display: block;
+    }
+
+    .small-video__views,
+    .small-video__author {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

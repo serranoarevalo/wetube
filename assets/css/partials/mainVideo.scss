@@ -1,20 +1,19 @@
-.video {
+.main-video {
   width: 100%;
-
-  .video__thumbnail {
+  .main-video__thumbnail {
     background-size: cover;
     background-position: center center;
     width: 100%;
     height: 80%;
     margin-bottom: 20px;
   }
-  .video__title {
+  .main-video__title {
     font-weight: 700;
     margin-bottom: 10px;
   }
-  .video__data {
+  .main-video__data {
     color: rgba(0, 0, 0, 0.5);
-    .video__date {
+    .main-video__date {
       margin-right: 10px;
     }
   }

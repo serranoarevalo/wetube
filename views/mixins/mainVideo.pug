@@ -1,0 +1,11 @@
+mixin mainVideo(video = {})
+    .main-video
+        a(href=`/video/${video.id}`)
+            div.main-video__thumbnail(style={'background-image':`url(${video.thumbnail})`})
+            h3.main-video__title= video.title
+            .main-video__data
+                span.main-video__date= video.timestamp
+                if video.views === 1
+                    span.main-video__views #{video.views} view
+                else
+                    span.main-video__views #{video.views} views

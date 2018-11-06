@@ -1,0 +1,6 @@
+@import "./partials/smallVideo.scss";
+.detail {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 50px;
+}

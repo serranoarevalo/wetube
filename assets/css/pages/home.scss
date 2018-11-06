@@ -1,3 +1,4 @@
+@import "../partials/mainVideo.scss";
 .home {
   & > * {
     display: grid;
@@ -5,12 +6,12 @@
     grid-gap: 50px;
   }
   .home__featured {
-    .video {
+    .main-video {
       height: 500px;
     }
   }
   .home__three {
-    .video {
+    .main-video {
       height: 400px;
     }
     margin-bottom: 50px;
@@ -18,7 +19,7 @@
   .home__all {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    .video {
+    .main-video {
       height: 200px;
     }
   }
