@@ -24,4 +24,15 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] User Detail
     - [x] Edit Profile
     - [x] Edit Video
-    - [ ] Upload
+    - [x] Upload
+
+### Mongo
+
+    - [ ] Models (Comments, Videos, Users)
+    - [ ] Fixtures
+
+### Routes
+
+    - [ ] Home
+    - [ ] Search
+    - [ ] Detail
