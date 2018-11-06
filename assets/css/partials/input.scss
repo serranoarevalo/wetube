@@ -5,6 +5,7 @@ input:not([type="file"]) {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 5px;
   padding: 10px 20px;
+  width: 100%;
 }
 
 input:focus,
@@ -12,7 +13,12 @@ textarea:focus {
   outline: none;
 }
 
-input[type="submit"] {
+button {
+  all: unset;
+}
+
+input[type="submit"],
+button {
   background-color: #3498db;
   color: white;
   text-align: center;
@@ -21,4 +27,13 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   font-size: 12px;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+button.danger {
+  background-color: $dark-red;
+  color: white;
+  font-weight: 700;
+  width: 100%;
 }

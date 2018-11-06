@@ -1,4 +1,9 @@
 extends layouts/main
 
 block content
-    h1 Hi
+    .edit-video
+        form.edit-video__form(action="/video/1/edit")
+            input(type="text", placeholder="Title", name='title')
+            textarea(placeholder="Description", name='email')
+            input(type="submit", value="Update Video")
+            button.danger Delete Video
