@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-@import "./reset.scss";
+@import "./config/reset.scss";
 @import "./main.scss";
-@import "./header.scss";
-@import "./footer.scss";
+@import "./partials/header.scss";
+@import "./partials/footer.scss";
+@import "./partials/video.scss";
+@import "./pages/home.scss";

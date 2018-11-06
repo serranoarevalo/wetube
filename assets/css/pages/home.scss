@@ -1,0 +1,25 @@
+.home {
+  & > * {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 50px;
+  }
+  .home__featured {
+    .video {
+      height: 500px;
+    }
+  }
+  .home__three {
+    .video {
+      height: 400px;
+    }
+    margin-bottom: 50px;
+  }
+  .home__all {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    .video {
+      height: 200px;
+    }
+  }
+}
