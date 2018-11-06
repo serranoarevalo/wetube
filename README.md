@@ -21,7 +21,7 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Video Detail
     - [x] Video Search Results
     - [x] Login
-    - [ ] User Detail
+    - [x] User Detail
     - [ ] Edit Profile
     - [ ] Upload
     - [ ] Edit Video
