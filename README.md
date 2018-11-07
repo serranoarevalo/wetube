@@ -33,7 +33,11 @@ Youtube Clone built on VanillaJS and NodeJS
 
 ### Routes
 
+    - [x] Log In
+    - [x] Edit Profile
+    - [x] Me
     - [x] Join
+    - [x] Change Password
     - [ ] Home
     - [ ] Search
     - [ ] Detail

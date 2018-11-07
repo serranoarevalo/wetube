@@ -1,25 +1,10 @@
 import express from "express";
-import multer from "multer";
-import multerS3 from "multer-s3";
-import aws from "aws-sdk";
 import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
+import { avatarUpload } from "./utils/fileUpload";
 
 const router = express.Router();
-
-const s3 = new aws.S3({
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: process.env.AWS_KEY_ID
-});
-
-const upload = multer({
-  storage: multerS3({
-    s3,
-    acl: "public-read",
-    bucket: "wetube/avatars"
-  })
-});
 
 // Videos
 router.get(routes.home, videoController.home);
@@ -47,7 +32,7 @@ router
   .get(userController.protectedRoute, userController.getEditProfile)
   .post(
     userController.protectedRoute,
-    upload.single("avatar"),
+    avatarUpload.single("avatar"),
     userController.postEditProfile
   );
 
