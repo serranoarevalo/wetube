@@ -16,7 +16,8 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: "wetube"
+    acl: "public-read",
+    bucket: "wetube/avatars"
   })
 });
 

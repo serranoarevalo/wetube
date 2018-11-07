@@ -5,8 +5,10 @@
     align-items: center;
     margin-bottom: 75px;
     .user__avatar {
-      @include userAvatar;
       margin-bottom: 20px;
+      .user__avatar-image {
+        @include userAvatar;
+      }
     }
     .user__name {
       margin-bottom: 10px;
