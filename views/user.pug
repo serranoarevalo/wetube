@@ -6,8 +6,16 @@ block content
     .user
         header.user__profile
             .user__avatar
-                div.user__avatar-image
-            h3.user__name Nicolas Serrano Arévalo
+                if user.avatarUrl
+                    div.user__avatar-image(style={'background-image':`url(${user.avatarUrl})`})
+                else
+                    div.user__avatar-image
+            h3.user__name= user.name
+            if canEdit
+                a(href=routes.editProfile)
+                    button ✏️ Edit Profile
+                a(href=routes.updatePassword)
+                    button 🔒 Change Password
         .user__uploaded-videos
             +mainVideo({
                 id:1,

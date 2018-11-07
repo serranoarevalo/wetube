@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .edit-profile
+        form.edit-profile__form(action=routes.editProfile, method="POST")
+            span
+                label(for="file") Avatar
+                input(type="file", name='avatar', id="file")
+            input(type="text", placeholder="Name", name='name', value=user.name, required=true)
+            input(type="email", placeholder="Email", name='email', value=user.email, required=true)
+            input(type="submit", value="Update Profile")

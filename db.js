@@ -4,7 +4,7 @@ dotenv.config();
 
 mongoose.connect(
   process.env.DB,
-  { useNewUrlParser: true }
+  { useNewUrlParser: true, useFindAndModify: false }
 );
 mongoose.Promise = global.Promise;
 

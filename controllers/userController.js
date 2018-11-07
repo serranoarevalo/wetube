@@ -1,16 +1,51 @@
 import passport from "passport";
 import User from "../models/User";
+import routes from "../routes";
+
+// Edit Profile
+
+const getEditProfile = (req, res) => {
+  res.render("edit", { title: "Edit Profile" });
+};
+
+const postEditProfile = async (req, res) => {
+  const { body } = req;
+  try {
+    await User.findOneAndUpdate({ _id: req.user._id }, { ...body });
+    res.redirect("/me");
+  } catch (error) {
+    res.render("edit", { title: "Edit Profile" });
+  }
+};
+
+// Update Password
+
+const getUpdatePassword = (req, res) =>
+  res.render("password", { title: "Update Password" });
+
+const postUpdatePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword2 },
+    user
+  } = req;
+  try {
+    if (newPassword === newPassword2) {
+      await user.changePassword(oldPassword, newPassword);
+      res.redirect(routes.me);
+    } else {
+      res.redirect(routes.updatePassword);
+    }
+  } catch (error) {
+    res.redirect(routes.updatePassword);
+  }
+};
 
 const userDetail = (req, res) => {
   res.render("user", { title: "User" });
 };
 
-const editProfile = (req, res) => {
-  res.render("edit-profile", { title: "Edit Profile" });
-};
-
 const myProfile = (req, res) => {
-  res.render("user", { title: "Your Profile" });
+  res.render("user", { title: "Your Profile", canEdit: true });
 };
 
 const logIn = (req, res) => {
@@ -58,8 +93,11 @@ const onlyPublic = (req, res, next) => {
 };
 
 export default {
+  getEditProfile,
+  postEditProfile,
+  getUpdatePassword,
+  postUpdatePassword,
   userDetail,
-  editProfile,
   myProfile,
   logIn,
   join,

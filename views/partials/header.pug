@@ -13,16 +13,16 @@ header.header
             if user !== null
                 ul
                     li
-                        a(href="/upload")
+                        a(href=routes.upload)
                             span Upload
                     li
-                        a(href=`/me`)
+                        a(href=routes.me)
                             span Profile
             else
                 ul
                     li
-                        a(href="/login")
+                        a(href=routes.login)
                             span Log In
                     li
-                        a(href="/join")
+                        a(href=routes.join)
                             span Join

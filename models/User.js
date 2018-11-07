@@ -3,6 +3,7 @@ import validator from "validator";
 import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
+  name: String,
   avatarUrl: String,
   email: {
     type: String,

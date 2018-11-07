@@ -8,6 +8,12 @@
       @include userAvatar;
       margin-bottom: 20px;
     }
+    .user__name {
+      margin-bottom: 10px;
+    }
+    & > a {
+      margin-bottom: 15px;
+    }
   }
   .user__uploaded-videos {
     display: grid;
