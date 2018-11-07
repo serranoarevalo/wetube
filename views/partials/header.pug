@@ -10,10 +10,19 @@ header.header
                 form(action="/search", method="get")
                     input(type="text", placeholder="Search WeTube", name="query")
         .header__column
-            ul
-                li
-                    a(href="/login")
-                        span Log In
-                li
-                    a(href="/join")
-                        span Join
+            if user !== null
+                ul
+                    li
+                        a(href="/upload")
+                            span Upload
+                    li
+                        a(href=`/me`)
+                            span Profile
+            else
+                ul
+                    li
+                        a(href="/login")
+                            span Log In
+                    li
+                        a(href="/join")
+                            span Join

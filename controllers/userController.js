@@ -14,19 +14,11 @@ const myProfile = (req, res) => {
 };
 
 const logIn = (req, res) => {
-  if (req.user) {
-    res.redirect("/");
-  } else {
-    res.render("login", { title: "Log In" });
-  }
+  res.render("login", { title: "Log In" });
 };
 
 const join = (req, res) => {
-  if (req.user) {
-    res.redirect("/");
-  } else {
-    res.render("join", { title: "Join" });
-  }
+  res.render("join", { title: "Join" });
 };
 
 const doEmailLogin = passport.authenticate("local", {
@@ -51,6 +43,20 @@ const doRegister = async (req, res, next) => {
   }
 };
 
+const protectedRoute = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+};
+
+const onlyPublic = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+  return next();
+};
+
 export default {
   userDetail,
   editProfile,
@@ -58,5 +64,7 @@ export default {
   logIn,
   join,
   doEmailLogin,
-  doRegister
+  doRegister,
+  protectedRoute,
+  onlyPublic
 };
