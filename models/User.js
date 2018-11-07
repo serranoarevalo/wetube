@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
   avatarUrl: String,
@@ -9,6 +10,8 @@ const UserSchema = new mongoose.Schema({
     validate: [validator.isEmail]
   }
 });
+
+UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 
 const model = mongoose.model("User", UserSchema);
 

@@ -20,4 +20,6 @@ router.get("/me", userController.myProfile);
 router.get("/login", userController.logIn);
 router.get("/join", userController.join);
 
+router.post("/join", userController.doRegister, userController.doEmailLogin);
+
 export default router;

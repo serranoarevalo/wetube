@@ -2,8 +2,9 @@ extends layouts/main
 
 block content
     .join
-        form.join__form(action="/join")
-            input.join__input(type="text", placeholder="Email", required=true)
-            input.join__input(type="password", placeholder="Password", required=true)
-            input.join__input(type="verify-password", placeholder="Verify Password", required=true)
+        form.join__form(action="/join", method="POST")
+            input.join__input(type="text", placeholder="Full name", required=true, name="name")
+            input.join__input(type="text", placeholder="Email", required=true, name="email")
+            input.join__input(type="password", placeholder="Password", required=true, name="password")
+            input.join__input(type="password", placeholder="Verify Password", required=true, name="verifyPassword")
             input.join__btn(type="submit", value="Submit")
