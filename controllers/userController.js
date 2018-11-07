@@ -14,11 +14,19 @@ const myProfile = (req, res) => {
 };
 
 const logIn = (req, res) => {
-  res.render("login", { title: "Log In" });
+  if (req.user) {
+    res.redirect("/");
+  } else {
+    res.render("login", { title: "Log In" });
+  }
 };
 
 const join = (req, res) => {
-  res.render("join", { title: "Join" });
+  if (req.user) {
+    res.redirect("/");
+  } else {
+    res.render("join", { title: "Join" });
+  }
 };
 
 const doEmailLogin = passport.authenticate("local", {

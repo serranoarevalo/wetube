@@ -6,9 +6,13 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
+import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import router from "./router";
 import "./passport";
+
+const CookieStore = MongoStore(session);
 
 const app = express();
 
@@ -22,7 +26,8 @@ app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new CookieStore({ mongooseConnection: mongoose.connection })
   })
 );
 

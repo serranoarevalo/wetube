@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .login
-        form.login__form(action="/login")
-            input.login__input(type="text", placeholder="Email", required=true)
-            input.login__input(type="password", placeholder="Password", required=true)
+        form.login__form(action="/login", method="POST")
+            input.login__input(type="text", name="email", placeholder="Email", required=true)
+            input.login__input(type="password", name="password", placeholder="Password", required=true)
             input.login__btn(type="submit", value="Submit")
