@@ -40,28 +40,34 @@ const postUpdatePassword = async (req, res) => {
   }
 };
 
-const userDetail = (req, res) => {
-  res.render("user", { title: "User" });
-};
+//  Log In
 
-const myProfile = (req, res) => {
-  res.render("user", { title: "Your Profile", canEdit: true });
-};
-
-const logIn = (req, res) => {
+const getLogIn = (req, res) => {
   res.render("login", { title: "Log In" });
 };
 
-const join = (req, res) => {
-  res.render("join", { title: "Join" });
-};
-
-const doEmailLogin = passport.authenticate("local", {
+const postEmailLogIn = passport.authenticate("local", {
   failureRedirect: "/login",
   successRedirect: "/"
 });
 
-const doRegister = async (req, res, next) => {
+// User Profiles
+
+const getUserDetail = (req, res) => {
+  res.render("user", { title: "User" });
+};
+
+const getMe = (req, res) => {
+  res.render("user", { title: "Your Profile", canEdit: true });
+};
+
+// Join
+
+const getJoin = (req, res) => {
+  res.render("join", { title: "Join" });
+};
+
+const postEmailRegister = async (req, res, next) => {
   const {
     body: { password, verifyPassword, email, name }
   } = req;
@@ -77,6 +83,8 @@ const doRegister = async (req, res, next) => {
     console.log(error);
   }
 };
+
+// Utilities
 
 const protectedRoute = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -97,12 +105,12 @@ export default {
   postEditProfile,
   getUpdatePassword,
   postUpdatePassword,
-  userDetail,
-  myProfile,
-  logIn,
-  join,
-  doEmailLogin,
-  doRegister,
+  getLogIn,
+  postEmailLogIn,
+  getUserDetail,
+  getMe,
+  getJoin,
+  postEmailRegister,
   protectedRoute,
   onlyPublic
 };

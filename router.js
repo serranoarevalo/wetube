@@ -18,8 +18,8 @@ router.get(
 
 // Users
 
-router.get(routes.user(), userController.userDetail);
-router.get(routes.me, userController.protectedRoute, userController.myProfile);
+router.get(routes.user(), userController.getUserDetail);
+router.get(routes.me, userController.protectedRoute, userController.getMe);
 
 router
   .route(routes.updatePassword)
@@ -33,16 +33,16 @@ router
 
 router
   .route(routes.login)
-  .get(userController.onlyPublic, userController.logIn)
-  .post(userController.onlyPublic, userController.doEmailLogin);
+  .get(userController.onlyPublic, userController.getLogIn)
+  .post(userController.onlyPublic, userController.postEmailLogIn);
 
 router
   .route(routes.join)
-  .get(userController.onlyPublic, userController.join)
+  .get(userController.onlyPublic, userController.getJoin)
   .post(
     userController.onlyPublic,
-    userController.doRegister,
-    userController.doEmailLogin
+    userController.postEmailRegister,
+    userController.postEmailLogIn
   );
 
 export default router;
