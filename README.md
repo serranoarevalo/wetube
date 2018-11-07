@@ -25,11 +25,11 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Edit Profile
     - [x] Edit Video
     - [x] Upload
+    - [x] Sign Up
 
 ### Mongo
 
-    - [ ] Models (Comments, Videos, Users)
-    - [ ] Fixtures
+    - [x] Models (Comments, Videos, Users)
 
 ### Routes
 

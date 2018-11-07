@@ -1,4 +1,7 @@
-const home = (req, res) => {
+import Video from "../models/Video";
+
+const home = async (req, res) => {
+  const videos = await Video.find({});
   res.render("home", { title: "Home" });
 };
 

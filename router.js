@@ -18,5 +18,6 @@ router.get("/user/:id", userController.userDetail);
 router.get("/edit-profile", userController.editProfile);
 router.get("/me", userController.myProfile);
 router.get("/login", userController.logIn);
+router.get("/join", userController.join);
 
 export default router;

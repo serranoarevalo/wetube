@@ -14,9 +14,14 @@ const logIn = (req, res) => {
   res.render("login", { title: "Log In" });
 };
 
+const join = (req, res) => {
+  res.render("join", { title: "Join" });
+};
+
 export default {
   userDetail,
   editProfile,
   myProfile,
-  logIn
+  logIn,
+  join
 };

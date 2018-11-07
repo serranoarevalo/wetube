@@ -1,0 +1,15 @@
+.join {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .join__form {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .join__input {
+      margin-bottom: 15px;
+    }
+  }
+}
