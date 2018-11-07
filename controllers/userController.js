@@ -1,6 +1,12 @@
 import passport from "passport";
+import aws from "aws-sdk";
 import User from "../models/User";
 import routes from "../routes";
+
+aws.config.update({
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_KEY_ID
+});
 
 // Edit Profile
 
@@ -10,6 +16,7 @@ const getEditProfile = (req, res) => {
 
 const postEditProfile = async (req, res) => {
   const { body } = req;
+  console.log(req.file);
   try {
     await User.findOneAndUpdate({ _id: req.user._id }, { ...body });
     res.redirect("/me");

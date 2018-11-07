@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .edit-profile
-        form.edit-profile__form(action=routes.editProfile, method="POST")
+        form.edit-profile__form(action=routes.editProfile, method="POST", enctype="multipart/form-data")
             span
                 label(for="file") Avatar
                 input(type="file", name='avatar', id="file")

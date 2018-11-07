@@ -1,7 +1,11 @@
 import express from "express";
+import multer from "multer";
+import path from "path";
 import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
+
+const upload = multer({ dest: path.join(__dirname, "uploads") });
 
 const router = express.Router();
 
@@ -29,7 +33,11 @@ router
 router
   .route(routes.editProfile)
   .get(userController.protectedRoute, userController.getEditProfile)
-  .post(userController.protectedRoute, userController.postEditProfile);
+  .post(
+    userController.protectedRoute,
+    upload.single("avatar"),
+    userController.postEditProfile
+  );
 
 router
   .route(routes.login)
