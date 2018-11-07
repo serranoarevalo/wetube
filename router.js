@@ -1,13 +1,24 @@
 import express from "express";
 import multer from "multer";
-import path from "path";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
 import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
 
-const upload = multer({ dest: path.join(__dirname, "uploads") });
-
 const router = express.Router();
+
+const s3 = new aws.S3({
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_KEY_ID
+});
+
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: "wetube"
+  })
+});
 
 // Videos
 router.get(routes.home, videoController.home);
