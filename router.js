@@ -21,6 +21,7 @@ router.get(
 
 router.get(routes.user(), userController.getUserDetail);
 router.get(routes.me, userController.protectedRoute, userController.getMe);
+router.get(routes.logout, userController.getLogout);
 
 router
   .route(routes.updatePassword)

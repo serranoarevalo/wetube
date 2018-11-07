@@ -91,6 +91,13 @@ const postEmailRegister = async (req, res, next) => {
   }
 };
 
+// Log Out
+
+const getLogout = (req, res) => {
+  req.logout();
+  res.redirect(routes.home);
+};
+
 // Utilities
 
 const protectedRoute = (req, res, next) => {
@@ -119,5 +126,6 @@ export default {
   getJoin,
   postEmailRegister,
   protectedRoute,
-  onlyPublic
+  onlyPublic,
+  getLogout
 };

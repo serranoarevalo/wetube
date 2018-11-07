@@ -13,6 +13,7 @@ const USER = "/user/:id";
 const ME = "/me";
 const EDIT_PROFILE = "/me/edit";
 const UPDATE_PASSWORD = "/me/edit/password";
+const LOG_OUT = "/logout";
 
 const routes = {
   home: HOME,
@@ -37,7 +38,8 @@ const routes = {
     } else {
       return VIDEO;
     }
-  }
+  },
+  logout: LOG_OUT
 };
 
 export default routes;

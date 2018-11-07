@@ -38,6 +38,7 @@ Youtube Clone built on VanillaJS and NodeJS
     - [x] Me
     - [x] Join
     - [x] Change Password
+    - [ ] Upload
     - [ ] Home
     - [ ] Search
     - [ ] Detail
