@@ -1,62 +1,68 @@
-const recordBtn = document.querySelector(".videoCapture__btn"),
-  videoPlayer = document.querySelector(".videoCapture__player");
-
-let recorder;
-let videoChunks = [];
-
-const getMedia = async () => {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: true,
-      video: { width: 1500, height: 750 }
-    });
-    configureVideo(stream);
-  } catch (error) {
-    recordBtn.innerHTML = "☹️ Can't record";
-    recordBtn.onclick = null;
+class VideoRecorder {
+  constructor() {
+    this.recordBtn = document.querySelector(".videoCapture__btn");
+    this.videoPlayer = document.querySelector(".videoCapture__player");
+    this.recorder;
+    this.videoData = [];
+    this.videoStream;
+    if (this.recordBtn) {
+      this.recordBtn.addEventListener("click", this.getMedia);
+    }
   }
-};
-
-const startRecording = srcObject => {
-  recorder = new MediaRecorder(srcObject);
-  recorder.start();
-  recorder.addEventListener("dataavailable", event => {
-    console.log(event, event.data);
-    videoChunks.push(event.data);
-  });
-  recorder.addEventListener("stop", () => downloadFile(new Blob(videoChunks)));
-};
-
-const configureVideo = stream => {
-  videoPlayer.srcObject = stream;
-  videoPlayer.muted = true;
-  videoPlayer.play();
-  configureBtn();
-  startRecording(videoPlayer.srcObject);
-};
-
-const configureBtn = () => {
-  recordBtn.innerHTML = "Stop Recording";
-  recordBtn.removeEventListener("click", startRecording);
-  recordBtn.addEventListener("click", stopRecording);
-};
-
-const stopRecording = () => {
-  videoPlayer.srcObject.getTracks().map(t => t.stop());
-  recordBtn.innerHTML = "Start Recording";
-  recordBtn.addEventListener("click", startRecording);
-  recorder.stop();
-};
-
-const downloadFile = blob => {
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "file.webm";
-  document.body.appendChild(link);
-  link.click();
-};
-
-if (recordBtn) {
-  recordBtn.addEventListener("click", getMedia);
+  getMedia = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: true,
+        video: { width: 1500, height: 750 }
+      });
+      this.videoStream = stream;
+      this.configureVideo();
+    } catch (error) {
+      this.recordBtn.innerHTML = "☹️ Can't record";
+      this.recordBtn.removeEventListener("click", this.getMedia);
+    }
+  };
+  configureVideo = () => {
+    this.startRecording(this.videoStream);
+    this.videoPlayer.srcObject = this.videoStream;
+    this.videoPlayer.muted = true;
+    this.videoPlayer.play();
+    this.configureBtn();
+  };
+  configureBtn = () => {
+    this.recordBtn.innerHTML = "Stop Recording";
+    this.recordBtn.onclick = null;
+    this.recordBtn.removeEventListener("click", this.getMedia);
+    this.recordBtn.addEventListener("click", this.stopRecording);
+  };
+  startRecording = () => {
+    this.recorder = new MediaRecorder(this.videoStream);
+    this.recorder.start();
+    this.recorder.addEventListener("dataavailable", this.addToChunks);
+    this.recorder.addEventListener("stop", this.handleStopRecording);
+  };
+  addToChunks = event => {
+    this.videoData.push(event.data);
+  };
+  handleStopRecording = () => {
+    const file = new Blob(this.videoData);
+    this.downloadFile(file);
+  };
+  stopRecording = () => {
+    this.videoPlayer.srcObject.getTracks().map(t => t.stop());
+    this.recordBtn.innerHTML = "Start Recording";
+    this.recorder.stop();
+    this.recordBtn.removeEventListener("click", this.stopRecording);
+    this.recordBtn.addEventListener("click", this.getMedia);
+  };
+  downloadFile = file => {
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = "file.webm";
+    document.body.appendChild(link);
+    link.click();
+  };
 }
+
+new VideoRecorder();
