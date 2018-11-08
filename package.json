@@ -32,6 +32,7 @@
     "mustache-express": "^1.2.8",
     "node-sass": "^4.9.4",
     "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
     "postcss": "^7.0.5",
@@ -44,11 +45,12 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
+    "localtunnel": "^1.9.1",
     "nodemon": "^1.18.5"
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --ignore 'assets/' --ignore 'static/'",
-    "dev:assets": "webpack -w",
-    "dev": "WEBPACK_ENV=development concurrently 'yarn dev:server' 'yarn dev:assets' --names 'Server,Assets' --prefix name"
+    "dev:assets": "WEBPACK_ENV=development webpack -w",
+    "dev:tunnel": "lt --port 3000"
   }
 }

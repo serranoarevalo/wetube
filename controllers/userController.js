@@ -58,6 +58,37 @@ const postEmailLogIn = passport.authenticate("local", {
   successRedirect: "/"
 });
 
+// Facebook
+
+const facebookLoginCallback = (req, res) => {
+  res.redirect("/");
+};
+
+const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
+  const { id, name, email } = profile._json;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.name = name;
+      user.facebookId = id;
+      user.avatarUrl = `http://graph.facebook.com/${id}/picture?type=large`;
+      user.save();
+      return cb(null, user);
+    } else {
+      const newUser = await User.create({
+        email,
+        name,
+        facebookId: id,
+        avatarUrl: `http://graph.facebook.com/${id}/picture?type=large`
+      }).save();
+
+      return cb(null, newUser);
+    }
+  } catch (error) {
+    return cb(error);
+  }
+};
+
 // User Profiles
 
 const getUserDetail = (req, res) => {
@@ -127,5 +158,7 @@ export default {
   postEmailRegister,
   protectedRoute,
   onlyPublic,
-  getLogout
+  getLogout,
+  facebookLoginCallback,
+  facebookLogin
 };

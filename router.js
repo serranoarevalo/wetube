@@ -1,10 +1,20 @@
 import express from "express";
+import passport from "passport";
 import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
 import { avatarUpload } from "./utils/fileUpload";
 
 const router = express.Router();
+
+// Auth
+
+router.get(routes.facebookLogin, passport.authenticate("facebook"));
+router.get(
+  routes.facebookCallback,
+  passport.authenticate("facebook", { failureRedirect: "/" }),
+  userController.facebookLoginCallback
+);
 
 // Videos
 router.get(routes.home, videoController.home);

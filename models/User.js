@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: "Email is required",
     validate: [validator.isEmail]
-  }
+  },
+  facebookId: Number
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

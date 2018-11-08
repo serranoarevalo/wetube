@@ -14,6 +14,8 @@ const ME = "/me";
 const EDIT_PROFILE = "/me/edit";
 const UPDATE_PASSWORD = "/me/edit/password";
 const LOG_OUT = "/logout";
+const FACEBOOK_LOGIN = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
 const routes = {
   home: HOME,
@@ -39,7 +41,9 @@ const routes = {
       return VIDEO;
     }
   },
-  logout: LOG_OUT
+  logout: LOG_OUT,
+  facebookLogin: FACEBOOK_LOGIN,
+  facebookCallback: FACEBOOK_CALLBACK
 };
 
 export default routes;
