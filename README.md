@@ -38,13 +38,13 @@ Youtube Clone built on VanillaJS and NodeJS
 - [x] Me
 - [x] Join
 - [x] Change Password
+- [x] Facebook Login
+- [x] Github Login
 - [ ] Upload
 - [ ] Home
 - [ ] Search
 - [ ] Detail
 - [ ] Edit Video
-- [ ] Facebook Login
-- [ ] Github Login
 
 ### API:
 
