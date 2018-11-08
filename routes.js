@@ -1,4 +1,4 @@
-const HOME = "";
+const HOME = "/";
 
 // Videos
 const SEARCH = "/search";
@@ -16,6 +16,8 @@ const UPDATE_PASSWORD = "/me/edit/password";
 const LOG_OUT = "/logout";
 const FACEBOOK_LOGIN = "/auth/facebook";
 const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+const GITHUB_LOGIN = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
 
 const routes = {
   home: HOME,
@@ -43,7 +45,9 @@ const routes = {
   },
   logout: LOG_OUT,
   facebookLogin: FACEBOOK_LOGIN,
-  facebookCallback: FACEBOOK_CALLBACK
+  facebookCallback: FACEBOOK_CALLBACK,
+  githubLogin: GITHUB_LOGIN,
+  githubCallback: GITHUB_CALLBACK
 };
 
 export default routes;

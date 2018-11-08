@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
     required: "Email is required",
     validate: [validator.isEmail]
   },
-  facebookId: Number
+  facebookId: Number,
+  githubId: Number
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

@@ -1,0 +1,36 @@
+.auth {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .auth__form {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .auth__input {
+      margin-bottom: 15px;
+    }
+  }
+  .social {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    a:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    .facebook {
+      background-color: #334f8d;
+    }
+    .github {
+      background-color: #171515;
+    }
+    svg {
+      fill: white;
+      margin-right: 10px;
+    }
+  }
+}

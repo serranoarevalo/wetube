@@ -55,13 +55,13 @@ const getLogIn = (req, res) => {
 
 const postEmailLogIn = passport.authenticate("local", {
   failureRedirect: "/login",
-  successRedirect: "/"
+  successRedirect: routes.home
 });
 
 // Facebook
 
 const facebookLoginCallback = (req, res) => {
-  res.redirect("/");
+  res.redirect(routes.home);
 };
 
 const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
@@ -69,9 +69,7 @@ const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
   try {
     const user = await User.findOne({ email });
     if (user) {
-      user.name = name;
       user.facebookId = id;
-      user.avatarUrl = `http://graph.facebook.com/${id}/picture?type=large`;
       user.save();
       return cb(null, user);
     } else {
@@ -81,7 +79,34 @@ const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
         facebookId: id,
         avatarUrl: `http://graph.facebook.com/${id}/picture?type=large`
       }).save();
+      return cb(null, newUser);
+    }
+  } catch (error) {
+    return cb(error);
+  }
+};
 
+// Github
+
+const githubLoginCallback = (req, res) => {
+  res.redirect(routes.home);
+};
+
+const githubLogin = async (accessToken, refreshToken, profile, cb) => {
+  const { id, name, email, avatar_url } = profile._json;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return cb(null, user);
+    } else {
+      const newUser = await User.create({
+        email,
+        name,
+        githubId: id,
+        avatarUrl: avatar_url
+      }).save();
       return cb(null, newUser);
     }
   } catch (error) {
@@ -126,7 +151,7 @@ const postEmailRegister = async (req, res, next) => {
 
 const getLogout = (req, res) => {
   req.logout();
-  res.redirect(routes.home);
+  return res.redirect(routes.home);
 };
 
 // Utilities
@@ -140,7 +165,7 @@ const protectedRoute = (req, res, next) => {
 
 const onlyPublic = (req, res, next) => {
   if (req.isAuthenticated()) {
-    return res.redirect("/");
+    return res.redirect(routes.home);
   }
   return next();
 };
@@ -160,5 +185,7 @@ export default {
   onlyPublic,
   getLogout,
   facebookLoginCallback,
-  facebookLogin
+  facebookLogin,
+  githubLoginCallback,
+  githubLogin
 };

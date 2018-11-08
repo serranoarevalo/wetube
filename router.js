@@ -16,6 +16,13 @@ router.get(
   userController.facebookLoginCallback
 );
 
+router.get(routes.githubLogin, passport.authenticate("github"));
+router.get(
+  routes.githubCallback,
+  passport.authenticate("github", { failureRedirect: "/" }),
+  userController.githubLoginCallback
+);
+
 // Videos
 router.get(routes.home, videoController.home);
 router.get(routes.search, videoController.searchVideo);
