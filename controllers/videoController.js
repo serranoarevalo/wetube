@@ -28,7 +28,7 @@ const postUploadVideo = async (req, res) => {
 
 const home = async (req, res) => {
   const videos = await Video.find({});
-  res.render("home", { title: "Home" });
+  res.render("home", { title: "Home", videos });
 };
 
 const searchVideo = (req, res) => {

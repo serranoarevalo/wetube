@@ -1,26 +1,20 @@
 @import "../partials/mainVideo.scss";
 .home {
-  & > * {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 50px;
-  }
-  .home__featured {
-    .main-video {
+  grid-gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  .main-video {
+    height: 200px;
+    &:first-child,
+    &:nth-child(2) {
       height: 500px;
+      grid-column: span 3;
     }
-  }
-  .home__three {
-    .main-video {
-      height: 400px;
-    }
-    margin-bottom: 50px;
-  }
-  .home__all {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    .main-video {
-      height: 200px;
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      height: 300px;
+      grid-column: span 2;
     }
   }
 }
