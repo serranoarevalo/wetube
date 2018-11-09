@@ -1,7 +1,7 @@
 mixin smallVideo(video = {})
     .small-video
         a(href=routes.videoDetail(video.id))
-            .small-video__thumbnail(style={'background-image':`url(${video.thumbnail})`})
+            video.small-video__thumbnail(src=video.thumbnail)
             .small-video__data
                 h3.small-video__title= video.title
                 if video.views === 1

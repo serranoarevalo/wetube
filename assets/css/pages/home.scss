@@ -7,7 +7,7 @@
     height: 200px;
     &:first-child,
     &:nth-child(2) {
-      height: 500px;
+      height: 450px;
       grid-column: span 3;
     }
     &:nth-child(3),

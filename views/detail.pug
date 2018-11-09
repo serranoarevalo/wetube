@@ -21,29 +21,28 @@ block content
                     span.comments__count 1 video
                 else
                     span.comments__count #{comments.length} comments
-                form.comments__form
-                    .comments__user(style={'background-image':`url(${user.avatarUrl})`})
-                    textarea.comments__textarea(placeholder="Add a comment")
-                ul.comments__list
-                    each comment in comments
-                        +comment({
-                            username: comment.author.name,
-                            timestamp: comment.createdAt,
-                            content: comment.comment,
-                            authorId: comment.author._id
-                        })
+                if user
+                    form.comments__form
+                        .comments__user(style={'background-image':`url(${user.avatarUrl})`})
+                        textarea.comments__textarea(placeholder="Add a comment")
+                    ul.comments__list
+                        each comment in comments
+                            +comment({
+                                username: comment.author.name,
+                                timestamp: comment.createdAt,
+                                content: comment.comment,
+                                authorId: comment.author._id
+                            })
+                else
+                    div.video__author
+                        a(href=routes.login) Log In to Comment
         .detail__related
-            +smallVideo({
-                id:1,
-                thumbnail:"https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/45614006_2054343997955112_419649091144777728_n.jpg?_nc_cat=101&_nc_ht=scontent-hkg3-1.xx&oh=c302e79002cf8cc8f3ce118d83f41b5f&oe=5C8870BA",
-                title:'Love this',
-                views:40,
-                author:'Nicolas',
-            })
-            +smallVideo({
-                id:1,
-                thumbnail:"https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/45614006_2054343997955112_419649091144777728_n.jpg?_nc_cat=101&_nc_ht=scontent-hkg3-1.xx&oh=c302e79002cf8cc8f3ce118d83f41b5f&oe=5C8870BA",
-                title:'Love this',
-                views:40,
-                author:'Nicolas',
-            })
+            each video in related
+                +smallVideo({
+                    id:video.id,
+                    thumbnail:video.fileUrl,
+                    title:video.title,
+                    views:video.views,
+                    author:video.author.name,
+                })
+            

@@ -40,11 +40,12 @@ Youtube Clone built on VanillaJS and NodeJS
 - [x] Change Password
 - [x] Facebook Login
 - [x] Github Login
-- [ ] Upload
-- [ ] Home
+- [x] Upload
+- [x] Home
+- [x] Detail
 - [ ] Search
-- [ ] Detail
 - [ ] Edit Video
+- [ ] Flash Messages
 
 ### API:
 

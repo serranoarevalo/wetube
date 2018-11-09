@@ -27,7 +27,7 @@ const postUploadVideo = async (req, res) => {
 };
 
 const home = async (req, res) => {
-  const videos = await Video.find({});
+  const videos = await Video.find({}).sort({ createdAt: -1 });
   res.render("home", { title: "Home", videos });
 };
 
@@ -41,8 +41,9 @@ const videoDetail = async (req, res) => {
   } = req;
   const video = await Video.findOne({ _id: id }).populate("author");
   const comments = await Comment.find({ video: id }).populate("author");
+  const related = await Video.find({ _id: { $ne: id } }).populate("author");
   if (video) {
-    res.render("detail", { title: "Detail", video, comments });
+    res.render("detail", { title: "Detail", video, comments, related });
   } else {
     // To Do 404
     res.redirect(routes.home);
