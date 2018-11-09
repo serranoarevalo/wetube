@@ -2,8 +2,9 @@ extends layouts/main
 
 block content
     .edit-video
-        form.edit-video__form(action="/video/1/edit")
-            input(type="text", placeholder="Title", name='title')
-            textarea(placeholder="Description", name='email')
+        form.edit-video__form(action=routes.editVideo(video.id), method="POST")
+            input(type="text", placeholder="Title", name='title' value=video.title)
+            textarea(placeholder="Description", name='description')=video.description
             input(type="submit", value="Update Video")
-            button.danger Delete Video
+            a(href=routes.deleteVideo(video.id))
+                button.danger(type="button") Delete Video

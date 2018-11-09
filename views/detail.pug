@@ -6,7 +6,10 @@ include mixins/comment
 block content
     .detail 
         .detail__main
-            .video-player
+            video.video-player(src=video.fileUrl)
+            if isAuthor
+                a(href=routes.editVideo(video.id))
+                    button.video__edit-btn Edit Video
             h3.video__title=video.title
             p.video__description=video.description
             if video.views === 1

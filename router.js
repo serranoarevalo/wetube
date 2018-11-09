@@ -27,7 +27,24 @@ router.get(
 router.get(routes.home, videoController.home);
 router.get(routes.search, videoController.searchVideo);
 router.get(routes.videoDetail(), videoController.videoDetail);
-router.get(routes.editVideo, videoController.editVideo);
+router.get(
+  routes.deleteVideo(),
+  userController.protectedRoute,
+  videoController.isAuthor,
+  videoController.getDeleteVideo
+);
+router
+  .route(routes.editVideo())
+  .get(
+    userController.protectedRoute,
+    videoController.isAuthor,
+    videoController.getEditVideo
+  )
+  .post(
+    userController.protectedRoute,
+    videoController.isAuthor,
+    videoController.postEditVideo
+  );
 
 router
   .route(routes.upload)

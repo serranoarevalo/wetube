@@ -4,6 +4,7 @@ const HOME = "/";
 const SEARCH = "/search";
 const VIDEO = "/video/:id";
 const EDIT_VIDEO = "/video/:id/edit";
+const DELETE_VIDEO = "/video/:id/delete";
 const UPLOAD = "/upload";
 
 // Users
@@ -22,7 +23,20 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const routes = {
   home: HOME,
   search: SEARCH,
-  editVideo: EDIT_VIDEO,
+  editVideo: id => {
+    if (id) {
+      return `/video/${id}/edit`;
+    } else {
+      return EDIT_VIDEO;
+    }
+  },
+  deleteVideo: id => {
+    if (id) {
+      return `/video/${id}/delete`;
+    } else {
+      return DELETE_VIDEO;
+    }
+  },
   upload: UPLOAD,
   login: LOGIN,
   join: JOIN,
