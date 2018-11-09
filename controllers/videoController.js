@@ -34,8 +34,17 @@ const searchVideo = (req, res) => {
   res.render("search", { title: "Search" });
 };
 
-const videoDetail = (req, res) => {
-  res.render("detail", { title: "Detail" });
+const videoDetail = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  const video = await Video.findOne({ _id: id }).populate("author");
+  if (video) {
+    res.render("detail", { title: "Detail", video });
+  } else {
+    // To Do 404
+    res.redirect(routes.home);
+  }
 };
 
 const editVideo = (req, res) => {

@@ -117,14 +117,23 @@ const githubLogin = async (accessToken, refreshToken, profile, cb) => {
 
 // User Profiles
 
-const getUserDetail = (req, res) => {
-  res.render("user", { title: "User" });
+const getUserDetail = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const user = await User.findOne({ _id: id });
+    const videos = await Video.find({ author: id });
+    res.render("user", { title: user.name, user, videos });
+  } catch (error) {
+    console.log(error);
+  }
+  // To Do: 404
 };
 
 const getMe = async (req, res) => {
   const { user } = req;
   const videos = await Video.find({ author: user._id });
-  console.log(videos);
   res.render("user", { title: "Your Profile", canEdit: true, user, videos });
 };
 

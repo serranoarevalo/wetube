@@ -7,9 +7,15 @@ block content
     .detail 
         .detail__main
             .video-player
-            h3.video__title We are going to Peru [Vlog]
-            p.video__description Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores a libero fuga iusto in labore. Nesciunt, facere consectetur! Nostrum in distinctio maxime, consequatur facere at dignissimos necessitatibus esse dicta nulla?
-            span.video__views 75,090 views
+            h3.video__title=video.title
+            p.video__description=video.description
+            if video.views === 1
+                span.video__views 1 view
+            else
+                span.video__views #{video.views} views
+            div.video__author
+                span By 
+                a(href=routes.user(video.author.id))=video.author.name
             .comments
                 span.comments__count 8 Comments
                 form.comments__form
