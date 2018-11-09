@@ -12,6 +12,7 @@ import MongoStore from "connect-mongo";
 import router from "./router";
 import "./passport";
 import routes from "./routes";
+import formatTime from "./utils/formatTime";
 
 const CookieStore = MongoStore(session);
 
@@ -39,6 +40,9 @@ app.use((req, res, next) => {
   res.locals.siteName = "WeTube";
   res.locals.user = req.user || null;
   res.locals.routes = routes;
+  res.locals.helpers = {
+    formatTime
+  };
   next();
 });
 

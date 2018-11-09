@@ -1,5 +1,6 @@
 import passport from "passport";
 import User from "../models/User";
+import Video from "../models/Video";
 import routes from "../routes";
 
 // Edit Profile
@@ -120,8 +121,11 @@ const getUserDetail = (req, res) => {
   res.render("user", { title: "User" });
 };
 
-const getMe = (req, res) => {
-  res.render("user", { title: "Your Profile", canEdit: true });
+const getMe = async (req, res) => {
+  const { user } = req;
+  const videos = await Video.find({ author: user._id });
+  console.log(videos);
+  res.render("user", { title: "Your Profile", canEdit: true, user, videos });
 };
 
 // Join

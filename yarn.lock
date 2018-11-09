@@ -3397,6 +3397,11 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+javascript-time-ago@^1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/javascript-time-ago/-/javascript-time-ago-1.0.32.tgz#8c43a6f8ac8eb0eb438a1df337425c8370ef9097"
+  integrity sha512-EbQty2KmZVA6ZimGVVv/J3bD8jZiL3UR0uBiHdhYf2xcMAN0b/EIySFCDyZpxmusmsZtekj4tAnVxLPXNOuDaA==
+
 jmespath@0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"

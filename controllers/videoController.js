@@ -19,10 +19,8 @@ const postUploadVideo = async (req, res) => {
       fileUrl: location,
       author: user._id
     });
-
-    res.redirect(routes.user(user._id));
+    res.redirect(routes.videoDetail(newVideo._id));
   } catch (error) {
-    console.log(error);
     res.render("upload", { title: "Upload" });
   }
 };

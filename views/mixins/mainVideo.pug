@@ -4,7 +4,7 @@ mixin mainVideo(video = {})
             div.main-video__thumbnail(style={'background-image':`url(${video.thumbnail})`})
             h3.main-video__title= video.title
             .main-video__data
-                span.main-video__date= video.timestamp
+                span.main-video__date= helpers.formatTime(video.timestamp)
                 if video.views === 1
                     span.main-video__views #{video.views} view
                 else
