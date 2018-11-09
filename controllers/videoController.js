@@ -1,4 +1,5 @@
 import Video from "../models/Video";
+import Comment from "../models/Comment";
 import routes from "../routes";
 
 // Upload Video
@@ -39,8 +40,9 @@ const videoDetail = async (req, res) => {
     params: { id }
   } = req;
   const video = await Video.findOne({ _id: id }).populate("author");
+  const comments = await Comment.find({ video: id }).populate("author");
   if (video) {
-    res.render("detail", { title: "Detail", video });
+    res.render("detail", { title: "Detail", video, comments });
   } else {
     // To Do 404
     res.redirect(routes.home);

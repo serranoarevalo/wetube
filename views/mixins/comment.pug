@@ -5,5 +5,5 @@ mixin comment(comment = {})
         .comment__user-data
             .comment__title
                 span.comment__username= comment.username
-                span.comment__timestamp= comment.timestamp
+                span.comment__timestamp= helpers.formatTime(comment.timestamp)
             p.comment__content= comment.content

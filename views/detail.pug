@@ -17,17 +17,21 @@ block content
                 span By 
                 a(href=routes.user(video.author.id))=video.author.name
             .comments
-                span.comments__count 8 Comments
+                if comments.length === 1
+                    span.comments__count 1 video
+                else
+                    span.comments__count #{comments.length} comments
                 form.comments__form
-                    .comments__user
+                    .comments__user(style={'background-image':`url(${user.avatarUrl})`})
                     textarea.comments__textarea(placeholder="Add a comment")
                 ul.comments__list
-                    +comment({
-                        username: 'Nicolas Serrano Arevalo',
-                        timestamp: '4 years',
-                        content:"This is the best video I've ever seen",
-                        authorId: 1
-                    })
+                    each comment in comments
+                        +comment({
+                            username: comment.author.name,
+                            timestamp: comment.createdAt,
+                            content: comment.comment,
+                            authorId: comment.author._id
+                        })
         .detail__related
             +smallVideo({
                 id:1,
