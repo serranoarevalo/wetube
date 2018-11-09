@@ -3,7 +3,7 @@ import passport from "passport";
 import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
-import { avatarUpload } from "./utils/fileUpload";
+import { avatarUpload, videoUpload } from "./utils/fileUpload";
 
 const router = express.Router();
 
@@ -28,11 +28,15 @@ router.get(routes.home, videoController.home);
 router.get(routes.search, videoController.searchVideo);
 router.get(routes.videoDetail(), videoController.videoDetail);
 router.get(routes.editVideo, videoController.editVideo);
-router.get(
-  routes.upload,
-  userController.protectedRoute,
-  videoController.uploadVideo
-);
+
+router
+  .route(routes.upload)
+  .get(userController.protectedRoute, videoController.getUploadVideo)
+  .post(
+    userController.protectedRoute,
+    videoUpload.single("video"),
+    videoController.postUploadVideo
+  );
 
 // Users
 

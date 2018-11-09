@@ -78,7 +78,7 @@ const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
         name,
         facebookId: id,
         avatarUrl: `http://graph.facebook.com/${id}/picture?type=large`
-      }).save();
+      });
       return cb(null, newUser);
     }
   } catch (error) {

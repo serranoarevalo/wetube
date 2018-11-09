@@ -1,4 +1,31 @@
 import Video from "../models/Video";
+import routes from "../routes";
+
+// Upload Video
+
+const getUploadVideo = (req, res) => {
+  res.render("upload", { title: "Upload" });
+};
+
+const postUploadVideo = async (req, res) => {
+  const {
+    user,
+    body,
+    file: { location }
+  } = req;
+  try {
+    const newVideo = await Video.create({
+      ...body,
+      fileUrl: location,
+      author: user._id
+    });
+
+    res.redirect(routes.user(user._id));
+  } catch (error) {
+    console.log(error);
+    res.render("upload", { title: "Upload" });
+  }
+};
 
 const home = async (req, res) => {
   const videos = await Video.find({});
@@ -13,10 +40,6 @@ const videoDetail = (req, res) => {
   res.render("detail", { title: "Detail" });
 };
 
-const uploadVideo = (req, res) => {
-  res.render("upload", { title: "Upload" });
-};
-
 const editVideo = (req, res) => {
   res.render("edit-video", { title: "Edit Video" });
 };
@@ -25,6 +48,7 @@ export default {
   searchVideo,
   home,
   videoDetail,
-  uploadVideo,
+  getUploadVideo,
+  postUploadVideo,
   editVideo
 };

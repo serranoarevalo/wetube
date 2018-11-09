@@ -16,3 +16,11 @@ export const avatarUpload = multer({
     bucket: "wetube/avatars"
   })
 });
+
+export const videoUpload = multer({
+  storage: multerS3({
+    s3,
+    acl: ACL,
+    bucket: "wetube/videos"
+  })
+});

@@ -5,10 +5,10 @@ block content
     .upload-video
         div.upload-video__form
             include partials/videoCapture
-            form.upload-video__form(action="/upload")
+            form.upload-video__form(action="/upload", method="POST", enctype="multipart/form-data")
                 span
                     label(for="video") Video
                     input(type="file", name='video', id="video", required=true)
                 input(type="text", placeholder="Title", name='title', required=true)
-                textarea(placeholder="Description", name='email', required=true)
-                input(type="submit", value="Update Video", required=true)
+                textarea(placeholder="Description", name='description', required=true)
+                input(type="submit", value="Upload Video", required=true)
