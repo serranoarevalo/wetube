@@ -43,8 +43,9 @@ Youtube Clone built on VanillaJS and NodeJS
 - [x] Upload
 - [x] Home
 - [x] Detail
+- [x] Edit Video
+- [x] Delete Video
 - [ ] Search
-- [ ] Edit Video
 - [ ] Flash Messages
 
 ### API:

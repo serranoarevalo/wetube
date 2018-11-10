@@ -31,10 +31,6 @@ const home = async (req, res) => {
   res.render("home", { title: "Home", videos });
 };
 
-const searchVideo = (req, res) => {
-  res.render("search", { title: "Search" });
-};
-
 const videoDetail = async (req, res) => {
   const {
     params: { id },
@@ -102,6 +98,18 @@ const getDeleteVideo = async (req, res) => {
   }
 };
 
+// Search
+
+const getSearchVideo = async (req, res) => {
+  const {
+    query: { terms }
+  } = req;
+  const videos = await Video.find({ title: { $regex: terms, $options: "i" } });
+  res.render("search", { title: "Search", term: terms, videos });
+};
+
+// Utils
+
 const isAuthor = async (req, res, next) => {
   const {
     user,
@@ -116,7 +124,6 @@ const isAuthor = async (req, res, next) => {
 };
 
 export default {
-  searchVideo,
   home,
   videoDetail,
   getUploadVideo,
@@ -124,5 +131,6 @@ export default {
   getEditVideo,
   isAuthor,
   postEditVideo,
-  getDeleteVideo
+  getDeleteVideo,
+  getSearchVideo
 };

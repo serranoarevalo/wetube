@@ -25,7 +25,7 @@ router.get(
 
 // Videos
 router.get(routes.home, videoController.home);
-router.get(routes.search, videoController.searchVideo);
+router.get(routes.search, videoController.getSearchVideo);
 router.get(routes.videoDetail(), videoController.videoDetail);
 router.get(
   routes.deleteVideo(),
