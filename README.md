@@ -53,3 +53,7 @@ Youtube Clone built on VanillaJS and NodeJS
 - [ ] Create Comment
 - [ ] Delete Comment
 - [ ] Register View
+
+### Frontend:
+
+- [ ] Video Player

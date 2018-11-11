@@ -2,11 +2,14 @@ extends layouts/main
 
 include mixins/smallVideo
 include mixins/comment
+include mixins/videoPlayer
 
 block content
     .detail 
         .detail__main
-            video.video-player(src=video.fileUrl)
+            +videoPlayer({
+                src:video.fileUrl
+            })
             if isAuthor
                 a(href=routes.editVideo(video.id))
                     button.video__edit-btn Edit Video
