@@ -1,6 +1,5 @@
 .video__container {
   width: 100%;
-  margin-bottom: 50px;
   position: relative;
   .video__player {
     height: 100%;
@@ -13,6 +12,7 @@
       max-width: none;
     }
   }
+
   .video__controls {
     max-width: 1000px;
     width: 100%;
@@ -27,6 +27,7 @@
     transition: opacity 0.5s ease-in-out;
     .video__control {
       cursor: pointer;
+      position: relative;
     }
   }
   i {
@@ -39,6 +40,31 @@
   .video__controls-column {
     display: flex;
     align-items: center;
+    position: relative;
+    .video__volume {
+      position: absolute;
+      top: -60px;
+      left: -25px;
+      transform: rotate(-90deg);
+      z-index: 10;
+      width: 80px;
+      input {
+        background-color: rgba(0, 0, 0, 0.7);
+        &::-webkit-slider-runnable-track {
+          background-color: $grey;
+          height: 5px;
+        }
+        &::-webkit-slider-thumb {
+          all: unset;
+          background-color: $red;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+          position: relative;
+          top: -5px;
+        }
+      }
+    }
     &:nth-child(2) {
       margin: 0 auto;
       align-self: center;
