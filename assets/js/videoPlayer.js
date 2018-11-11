@@ -6,12 +6,15 @@ let videoPlayer,
   currentTime,
   timerInterval,
   totalTime,
-  fullScreenBtn;
+  fullScreenBtn,
+  volumeRange;
 
 const PLAY_ICON = `<i class="fas fa-play"></i>`;
 const PAUSE_ICON = `<i class="fas fa-pause"></i>`;
 const VOLUME_MEDIUM = `<i class="fas fa-volume-down"></i>`;
-const VOLUME_MUTED = `<i class="fas fa-volume-off"></i>`;
+const VOLUME_MUTED = `<i class="fas fa-volume-mute"></i>`;
+const VOLUME_OFF = `<i class="fas fa-volume-off"></i>`;
+const VOLUME_FULL = `<i class="fas fa-volume-up"></i>`;
 const FULLSCREEN = `<i class="fas fa-expand"></i>`;
 const FULLSCREEN_OUT = `<i class="fas fa-compress"></i>`;
 
@@ -110,8 +113,28 @@ const enterFullScreen = () => {
   fullScreenBtn.addEventListener("click", exitFullScreen);
 };
 
+const handleVolumeChange = event => {
+  const {
+    target: { value }
+  } = event;
+  const parsedValue = parseFloat(value);
+  console.log(parsedValue);
+
+  if (value < 0.3) {
+    volumeOffIcon();
+  } else if (value < 0.7) {
+    volumeMediumIcon();
+  } else {
+    volumeFullIcon();
+  }
+
+  videoPlayer.volume = value;
+};
+
 const volumeMuteIcon = () => (volumeBtn.innerHTML = VOLUME_MUTED);
 const volumeMediumIcon = () => (volumeBtn.innerHTML = VOLUME_MEDIUM);
+const volumeFullIcon = () => (volumeBtn.innerHTML = VOLUME_FULL);
+const volumeOffIcon = () => (volumeBtn.innerHTML = VOLUME_OFF);
 
 const playerPlayIcon = () => (playBtn.innerHTML = PLAY_ICON);
 const playerPauseIcon = () => (playBtn.innerHTML = PAUSE_ICON);
@@ -126,11 +149,13 @@ const initVideoPlayer = () => {
   currentTime = videoContainer.querySelector("#video__current-time");
   totalTime = videoContainer.querySelector("#video__total-time");
   fullScreenBtn = videoContainer.querySelector("#js-fullscreen");
+  volumeRange = videoContainer.querySelector("#js-volume-range");
   getDuration();
   playBtn.addEventListener("click", handlePlayBtn);
   volumeBtn.addEventListener("click", handleVolumeClick);
   videoPlayer.addEventListener("ended", handleEnded);
   fullScreenBtn.addEventListener("click", enterFullScreen);
+  volumeRange.addEventListener("input", handleVolumeChange);
   videoPlayer.volume = 0.5;
 };
 
