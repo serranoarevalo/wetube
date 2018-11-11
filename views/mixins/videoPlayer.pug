@@ -1,14 +1,14 @@
 mixin videoPlayer(video={})
     .video__container
-        video.video__player(src=video.src)
+        video.video__player(src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4", preload="metadata")
         .video__controls
             .video__controls-column 
                 span.video__control#js-volume
                     <i class="fas fa-volume-down"></i>
                 span.video__time
-                    span.video__current-time 00:00
+                    span#video__current-time 00:00
                     |  /  
-                    span.video__total-time 01:30
+                    span#video__total-time 01:30
             .video__controls-column
                 span.video__control#js-play
                     <i class="fas fa-play"></i>
