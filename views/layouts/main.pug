@@ -1,9 +1,25 @@
+include ../mixins/flash
 doctype html
 html
     head
         title #{title} | #{siteName}
         link(rel='stylesheet', href='/styles.css')
     body
+        if messages.error
+            +flash({
+                type:'error',
+                text:messages.error
+            })
+        if messages.info
+            +flash({
+                    type:'info',
+                    text:messages.info
+                })
+        if messages.success
+            +flash({
+                type:'success',
+                text:messages.success
+            })
         include ../partials/header
         main
             block content

@@ -9,6 +9,7 @@ import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import flash from "express-flash";
 import router from "./router";
 import "./passport";
 import routes from "./routes";
@@ -35,6 +36,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.siteName = "WeTube";

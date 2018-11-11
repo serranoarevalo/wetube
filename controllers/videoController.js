@@ -1,6 +1,7 @@
 import Video from "../models/Video";
 import Comment from "../models/Comment";
 import routes from "../routes";
+import makeFlash from "../utils/makeFlash";
 
 // Upload Video
 
@@ -22,13 +23,28 @@ const postUploadVideo = async (req, res) => {
     });
     res.redirect(routes.videoDetail(newVideo._id));
   } catch (error) {
-    res.render("upload", { title: "Upload" });
+    req.flash("error", "Cant Upload Video");
+    res.render("upload", {
+      title: "Upload"
+    });
   }
 };
 
 const home = async (req, res) => {
-  const videos = await Video.find({}).sort({ createdAt: -1 });
-  res.render("home", { title: "Home", videos });
+  try {
+    const videos = await Video.find({}).sort({ createdAt: -1 });
+
+    res.render("home", {
+      title: "Home",
+      videos
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("home", {
+      title: "Home",
+      videos: []
+    });
+  }
 };
 
 const videoDetail = async (req, res) => {
@@ -36,14 +52,14 @@ const videoDetail = async (req, res) => {
     params: { id },
     user
   } = req;
-  const video = await Video.findOne({ _id: id }).populate("author");
-  const comments = await Comment.find({ video: id }).populate("author");
-  const related = await Video.find({ _id: { $ne: id } }).populate("author");
-  let isAuthor = false;
-  if (user) {
-    isAuthor = user.id === video.author.id;
-  }
-  if (video) {
+  try {
+    const video = await Video.findOne({ _id: id }).populate("author");
+    const comments = await Comment.find({ video: id }).populate("author");
+    const related = await Video.find({ _id: { $ne: id } }).populate("author");
+    let isAuthor = false;
+    if (user && video) {
+      isAuthor = user.id === video.author.id;
+    }
     res.render("detail", {
       title: "Detail",
       video,
@@ -51,8 +67,9 @@ const videoDetail = async (req, res) => {
       related,
       isAuthor
     });
-  } else {
-    // To Do 404
+  } catch (error) {
+    console.log(error);
+    res.locals.flashMessage = makeFlash("error", "Welcome");
     res.redirect(routes.home);
   }
 };
