@@ -2704,6 +2704,11 @@ generaterr@^1.5.0:
   resolved "https://registry.yarnpkg.com/generaterr/-/generaterr-1.5.0.tgz#b0ceb6cc5164df2a061338cc340a8615395c52fc"
   integrity sha1-sM62zFFk3yoGEzjMNAqGFTlcUvw=
 
+get-blob-duration@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/get-blob-duration/-/get-blob-duration-1.0.0.tgz#152c61ed4c3dabeab0171a26bdc1f6b7759379fa"
+  integrity sha512-zZEpckZhhWV2ZI/eWQsOH1UjdCD0qnwt1MxKe4NKXvtrGEQW9AW1hxd+He9nIHXt0gkXow5kKQb/cxR8wFoT2w==
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"

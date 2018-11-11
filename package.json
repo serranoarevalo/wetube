@@ -26,6 +26,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "get-blob-duration": "^1.0.0",
     "handlebars-layouts": "^3.1.4",
     "javascript-time-ago": "^1.0.32",
     "mongoose": "^5.3.8",

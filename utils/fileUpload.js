@@ -13,7 +13,8 @@ export const avatarUpload = multer({
   storage: multerS3({
     s3,
     acl: ACL,
-    bucket: "wetube/avatars"
+    bucket: "wetube/avatars",
+    contentType: multerS3.AUTO_CONTENT_TYPE
   })
 });
 
@@ -21,6 +22,7 @@ export const videoUpload = multer({
   storage: multerS3({
     s3,
     acl: ACL,
-    bucket: "wetube/videos"
+    bucket: "wetube/videos",
+    contentType: (req, file, cb) => cb(null, "video/webm")
   })
 });
