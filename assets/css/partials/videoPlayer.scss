@@ -10,22 +10,19 @@
   }
   .video__controls {
     max-width: 1000px;
+    width: 100%;
     padding: 0px 20px;
     height: 49px;
     position: relative;
     bottom: 50px;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     .video__control {
       cursor: pointer;
     }
-  }
-  .video__controls-column:nth-child(2) {
-    margin: 0 auto;
   }
   i {
     color: $grey;
@@ -37,6 +34,13 @@
   .video__controls-column {
     display: flex;
     align-items: center;
+    &:nth-child(2) {
+      margin: 0 auto;
+      align-self: center;
+    }
+    &:last-child {
+      justify-self: end;
+    }
     .video__time {
       margin-left: 15px;
       color: $grey;
