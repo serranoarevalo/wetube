@@ -21,6 +21,7 @@ const postUploadVideo = async (req, res) => {
       fileUrl: location,
       author: user._id
     });
+    req.flash("success", "Video Uploaded");
     res.redirect(routes.videoDetail(newVideo._id));
   } catch (error) {
     req.flash("error", "Cant Upload Video");
@@ -33,7 +34,6 @@ const postUploadVideo = async (req, res) => {
 const home = async (req, res) => {
   try {
     const videos = await Video.find({}).sort({ createdAt: -1 });
-
     res.render("home", {
       title: "Home",
       videos
@@ -60,16 +60,19 @@ const videoDetail = async (req, res) => {
     if (user && video) {
       isAuthor = user.id === video.author.id;
     }
-    res.render("detail", {
-      title: "Detail",
-      video,
-      comments,
-      related,
-      isAuthor
-    });
+    if (video) {
+      res.render("detail", {
+        title: "Detail",
+        video,
+        comments,
+        related,
+        isAuthor
+      });
+    } else {
+      throw Error();
+    }
   } catch (error) {
-    console.log(error);
-    res.locals.flashMessage = makeFlash("error", "Welcome");
+    req.flash("error", "Video Not Found");
     res.redirect(routes.home);
   }
 };
@@ -81,10 +84,14 @@ const getEditVideo = async (req, res) => {
     user,
     params: { id }
   } = req;
-  const video = await Video.findOne({ _id: id });
-  if (video) {
-    res.render("edit-video", { title: "Edit Video", video });
-  } else {
+  try {
+    const video = await Video.findOne({ _id: id });
+    if (video) {
+      res.render("edit-video", { title: "Edit Video", video });
+    } else {
+      throw Error();
+    }
+  } catch (error) {
     res.redirect(routes.home);
   }
 };
@@ -121,8 +128,14 @@ const getSearchVideo = async (req, res) => {
   const {
     query: { terms }
   } = req;
-  const videos = await Video.find({ title: { $regex: terms, $options: "i" } });
-  res.render("search", { title: "Search", term: terms, videos });
+  try {
+    const videos = await Video.find({
+      title: { $regex: terms, $options: "i" }
+    });
+    res.render("search", { title: "Search", term: terms, videos });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
 };
 
 // Utils
@@ -134,6 +147,7 @@ const isAuthor = async (req, res, next) => {
   } = req;
   const video = await Video.findOne({ _id: id });
   if (String(video.author) !== user.id) {
+    req.flash("error", "You don't own the video");
     res.redirect(routes.videoDetail(id));
   } else {
     next();

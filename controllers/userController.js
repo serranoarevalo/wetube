@@ -10,18 +10,16 @@ const getEditProfile = (req, res) => {
 };
 
 const postEditProfile = async (req, res) => {
-  const {
-    body,
-    file: { location }
-  } = req;
-
+  const { body, file, user } = req;
   try {
     await User.findOneAndUpdate(
       { _id: req.user._id },
-      { ...body, avatarUrl: location || null }
+      { ...body, avatarUrl: file ? file.location : user.avatarUrl }
     );
+    req.flash("success", "Profile updated!");
     res.redirect("/me");
   } catch (error) {
+    req.flash("error", "Can't edit profile");
     res.render("edit", { title: "Edit Profile" });
   }
 };
@@ -39,11 +37,16 @@ const postUpdatePassword = async (req, res) => {
   try {
     if (newPassword === newPassword2) {
       await user.changePassword(oldPassword, newPassword);
+      req.flash("success", "Password Updated!");
       res.redirect(routes.me);
     } else {
+      res.status(304);
+      req.flash("error", "Make sure the verification password matches");
       res.redirect(routes.updatePassword);
     }
   } catch (error) {
+    res.status(304);
+    req.flash("error", "Can't update password");
     res.redirect(routes.updatePassword);
   }
 };
@@ -56,12 +59,14 @@ const getLogIn = (req, res) => {
 
 const postEmailLogIn = passport.authenticate("local", {
   failureRedirect: "/login",
-  successRedirect: routes.home
+  successRedirect: routes.home,
+  successFlash: "Welcome"
 });
 
 // Facebook
 
 const facebookLoginCallback = (req, res) => {
+  req.flash("success", "Welcome!");
   res.redirect(routes.home);
 };
 
@@ -90,6 +95,7 @@ const facebookLogin = async (accessToken, refreshToken, profile, cb) => {
 // Github
 
 const githubLoginCallback = (req, res) => {
+  req.flash("success", "Welcome!");
   res.redirect(routes.home);
 };
 
@@ -126,9 +132,9 @@ const getUserDetail = async (req, res) => {
     const videos = await Video.find({ author: id });
     res.render("user", { title: user.name, user, videos });
   } catch (error) {
-    console.log(error);
+    req.flash("error", "User not found");
+    res.redirect(routes.home);
   }
-  // To Do: 404
 };
 
 const getMe = async (req, res) => {
@@ -149,6 +155,7 @@ const postEmailRegister = async (req, res, next) => {
   } = req;
   if (password !== verifyPassword) {
     res.status(401);
+    req.flash("error", "Passwords do not match");
     res.render("join", { title: "Log In" });
   }
   const user = new User({ email, name });
