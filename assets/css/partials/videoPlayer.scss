@@ -1,12 +1,17 @@
 .video__container {
   width: 100%;
-  height: 500px;
   margin-bottom: 50px;
   position: relative;
   .video__player {
     height: 100%;
     width: 100%;
     max-width: 1000px;
+  }
+  &:fullscreen {
+    .video__player,
+    .video__controls {
+      max-width: none;
+    }
   }
   .video__controls {
     max-width: 1000px;
