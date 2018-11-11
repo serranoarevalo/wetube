@@ -118,7 +118,6 @@ const handleVolumeChange = event => {
     target: { value }
   } = event;
   const parsedValue = parseFloat(value);
-  console.log(parsedValue);
 
   if (value < 0.3) {
     volumeOffIcon();
@@ -127,8 +126,18 @@ const handleVolumeChange = event => {
   } else {
     volumeFullIcon();
   }
-
   videoPlayer.volume = value;
+  localStorage.setItem("volume", value);
+};
+
+const restoreVolume = () => {
+  const volume = localStorage.getItem("volume");
+  if (volume) {
+    videoPlayer.volume = volume;
+    volumeRange.value = volume;
+  } else {
+    videoPlayer.volume = 0.5;
+  }
 };
 
 const volumeMuteIcon = () => (volumeBtn.innerHTML = VOLUME_MUTED);
@@ -151,12 +160,12 @@ const initVideoPlayer = () => {
   fullScreenBtn = videoContainer.querySelector("#js-fullscreen");
   volumeRange = videoContainer.querySelector("#js-volume-range");
   getDuration();
+  restoreVolume();
   playBtn.addEventListener("click", handlePlayBtn);
   volumeBtn.addEventListener("click", handleVolumeClick);
   videoPlayer.addEventListener("ended", handleEnded);
   fullScreenBtn.addEventListener("click", enterFullScreen);
   volumeRange.addEventListener("input", handleVolumeChange);
-  videoPlayer.volume = 0.5;
 };
 
 if (videoContainer) {
