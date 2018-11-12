@@ -100,7 +100,7 @@ router.post(
   commentController.postComment
 );
 router.delete(
-  routes.deleteComment(),
+  routes.deleteComment,
   userController.protectedRoute,
   commentController.deleteComment
 );

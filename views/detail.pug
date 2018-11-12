@@ -41,7 +41,8 @@ block content
                                 timestamp: comment.createdAt,
                                 content: comment.comment,
                                 authorId: comment.author._id,
-                                authorAvatar: comment.author.avatarUrl
+                                authorAvatar: comment.author.avatarUrl,
+                                commentId: comment._id
                             })
                 else
                     div.video__author

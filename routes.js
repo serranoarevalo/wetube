@@ -28,13 +28,7 @@ const DELETE_COMMENT = "/api/comment/:id/delete";
 
 const routes = {
   postComment: POST_COMMENT,
-  deleteComment: id => {
-    if (id) {
-      return `/api/comment/${id}/delete`;
-    } else {
-      return DELETE_COMMENT;
-    }
-  },
+  deleteComment: DELETE_COMMENT,
   home: HOME,
   search: SEARCH,
   editVideo: id => {

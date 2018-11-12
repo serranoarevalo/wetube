@@ -1,11 +1,25 @@
 import axios from "axios";
 const commentForm = document.getElementById("js-commentForm");
-let commentTextArea, currentAvatar, commentList, commentsCount;
+let commentTextArea,
+  currentAvatar,
+  commentList,
+  commentsCount,
+  deleteCommentBtn;
 
-const increaseCommentCount = () => {
+const getCommentCount = () => {
   const commentsString = commentsCount.innerText;
   const commentsInt = parseInt(commentsString);
-  commentsCount.innerText = commentsInt + 1;
+  return commentsInt;
+};
+
+const decreaseCommentCount = () => {
+  const commentNumber = getCommentCount();
+  commentsCount.innerText = commentNumber - 1;
+};
+
+const increaseCommentCount = () => {
+  const commentNumber = getCommentCount();
+  commentsCount.innerText = commentNumber + 1;
 };
 
 const handleCommentSubmit = async event => {
@@ -43,12 +57,35 @@ const handleCommentSubmit = async event => {
   }
 };
 
+const destroyComment = element => {
+  const li = element.parentNode;
+  commentList.removeChild(li);
+};
+
+const deleteComment = async event => {
+  const { target } = event;
+  const btnParent = target.parentNode;
+  const videoId = btnParent.getAttribute("data-id");
+  const { status } = await axios({
+    method: "delete",
+    url: `/api/comment/${videoId}/delete`
+  });
+  if (status === 200) {
+    decreaseCommentCount();
+    destroyComment(btnParent);
+  }
+};
+
 const initComment = () => {
   commentTextArea = commentForm.querySelector(".comments__textarea");
   currentAvatar = commentForm.querySelector(".comments__user");
   commentList = document.getElementById("js-commentList");
   commentsCount = document.getElementById("js-countNumber");
+  deleteCommentBtn = document.querySelectorAll(".canDelete");
   commentForm.addEventListener("submit", handleCommentSubmit);
+  Array.from(deleteCommentBtn).forEach(button =>
+    button.addEventListener("click", deleteComment)
+  );
 };
 
 if (commentForm) {

@@ -8,3 +8,8 @@ mixin comment(comment = {})
                     span.comment__username= comment.username
                 span.comment__timestamp= helpers.formatTime(comment.timestamp)
             p.comment__content= comment.content
+        
+        if String(user._id) === String(comment.authorId)
+            .canDelete(data-id=comment.commentId)
+                span ❌
+        
