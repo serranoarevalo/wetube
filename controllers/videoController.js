@@ -136,7 +136,6 @@ const getSearchVideo = async (req, res) => {
     res.redirect(routes.home);
   }
 };
-
 // Utils
 
 const isAuthor = async (req, res, next) => {

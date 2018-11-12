@@ -51,10 +51,12 @@ const handlePlayBtn = () => {
 const handleVolumeClick = () => {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
+    volumeRange.value = videoPlayer.volume;
     volumeMediumIcon();
   } else {
     videoPlayer.muted = true;
     volumeMuteIcon();
+    volumeRange.value = 0;
   }
 };
 
@@ -81,6 +83,10 @@ const getDuration = async () => {
   const blob = await fetch(videoPlayer.src).then(r => r.blob());
   const duration = await getBlobDuration(blob);
   totalTime.innerHTML = formatDate(Math.floor(duration));
+};
+
+const saveVolume = () => {
+  localStorage.setItem("volume", videoPlayer.volume);
 };
 
 const exitFullScreen = () => {
@@ -127,7 +133,7 @@ const handleVolumeChange = event => {
     volumeFullIcon();
   }
   videoPlayer.volume = value;
-  localStorage.setItem("volume", value);
+  saveVolume();
 };
 
 const restoreVolume = () => {

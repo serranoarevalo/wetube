@@ -4,6 +4,7 @@ import routes from "./routes";
 import userController from "./controllers/userController";
 import videoController from "./controllers/videoController";
 import { avatarUpload, videoUpload } from "./utils/fileUpload";
+import commentController from "./controllers/commentController";
 
 const router = express.Router();
 
@@ -88,5 +89,18 @@ router
     userController.postEmailRegister,
     userController.postEmailLogIn
   );
+
+// Comments
+
+router.post(
+  routes.postComment,
+  userController.protectedRoute,
+  commentController.postComment
+);
+router.delete(
+  routes.deleteComment(),
+  userController.protectedRoute,
+  commentController.deleteComment
+);
 
 export default router;

@@ -56,4 +56,4 @@ Youtube Clone built on VanillaJS and NodeJS
 
 ### Frontend:
 
-- [ ] Video Player
+- [x] Video Player

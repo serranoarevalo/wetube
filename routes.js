@@ -20,7 +20,20 @@ const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 const GITHUB_LOGIN = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
+// Comments
+
+const POST_COMMENT = "/api/video/:id/comment";
+const DELETE_COMMENT = "/api/comment/:id/delete";
+
 const routes = {
+  postComment: POST_COMMENT,
+  deleteComment: id => {
+    if (id) {
+      return `/api/comment/${id}/delete`;
+    } else {
+      return DELETE_COMMENT;
+    }
+  },
   home: HOME,
   search: SEARCH,
   editVideo: id => {

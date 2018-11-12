@@ -48,6 +48,7 @@
       transform: rotate(-90deg);
       z-index: 10;
       width: 80px;
+      opacity: 0;
       input {
         background-color: rgba(0, 0, 0, 0.7);
         &::-webkit-slider-runnable-track {
@@ -71,6 +72,11 @@
     }
     &:last-child {
       justify-self: end;
+    }
+    &:first-child:hover {
+      .video__volume {
+        opacity: 1;
+      }
     }
     .video__time {
       margin-left: 15px;

@@ -28,16 +28,18 @@ block content
                 else
                     span.comments__count #{comments.length} comments
                 if user
-                    form.comments__form
+                    form.comments__form#js-commentForm
                         .comments__user(style={'background-image':`url(${user.avatarUrl})`})
-                        textarea.comments__textarea(placeholder="Add a comment")
+                        input.comments__textarea(placeholder="Add a comment", type="text")
+                        
                     ul.comments__list
                         each comment in comments
                             +comment({
                                 username: comment.author.name,
                                 timestamp: comment.createdAt,
                                 content: comment.comment,
-                                authorId: comment.author._id
+                                authorId: comment.author._id,
+                                authorAvatar: comment.author.avatarUrl
                             })
                 else
                     div.video__author
