@@ -1,4 +1,6 @@
 import getBlobDuration from "get-blob-duration";
+import axios from "axios";
+
 const videoContainer = document.querySelector(".video__container");
 let videoPlayer,
   playBtn,
@@ -17,6 +19,14 @@ const VOLUME_OFF = `<i class="fas fa-volume-off"></i>`;
 const VOLUME_FULL = `<i class="fas fa-volume-up"></i>`;
 const FULLSCREEN = `<i class="fas fa-expand"></i>`;
 const FULLSCREEN_OUT = `<i class="fas fa-compress"></i>`;
+
+const registerView = async () => {
+  const videoId = window.location.href.split("/video/")[1];
+  await axios({
+    method: "post",
+    url: `/api/video/${videoId}/view`
+  });
+};
 
 const formatDate = seconds => {
   var sec_num = parseInt(seconds, 10); // don't forget the second param
@@ -65,6 +75,7 @@ const handleEnded = () => {
   stopTimerInterval();
   playerPlayIcon();
   setTime();
+  registerView();
 };
 
 const setTime = () => {

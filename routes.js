@@ -6,6 +6,7 @@ const VIDEO = "/video/:id";
 const EDIT_VIDEO = "/video/:id/edit";
 const DELETE_VIDEO = "/video/:id/delete";
 const UPLOAD = "/upload";
+const REGISTER_VIEW = "/api/video/:id/view";
 
 // Users
 const LOGIN = "/login";
@@ -74,7 +75,8 @@ const routes = {
   facebookLogin: FACEBOOK_LOGIN,
   facebookCallback: FACEBOOK_CALLBACK,
   githubLogin: GITHUB_LOGIN,
-  githubCallback: GITHUB_CALLBACK
+  githubCallback: GITHUB_CALLBACK,
+  registerView: REGISTER_VIEW
 };
 
 export default routes;

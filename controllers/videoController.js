@@ -138,6 +138,29 @@ const getSearchVideo = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+// Register View
+
+const postRegisterView = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const video = await Video.findOne({ _id: id });
+    if (video) {
+      video.views = video.views + 1;
+      video.save();
+      res.status(200);
+      res.end();
+    }
+    res.status(404);
+    res.end();
+  } catch (error) {
+    res.status(400);
+    res.end();
+  }
+};
+
 // Utils
 
 const isAuthor = async (req, res, next) => {
@@ -163,5 +186,6 @@ export default {
   isAuthor,
   postEditVideo,
   getDeleteVideo,
-  getSearchVideo
+  getSearchVideo,
+  postRegisterView
 };

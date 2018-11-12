@@ -56,6 +56,8 @@ router
     videoController.postUploadVideo
   );
 
+router.post(routes.registerView, videoController.postRegisterView);
+
 // Users
 
 router.get(routes.user(), userController.getUserDetail);
