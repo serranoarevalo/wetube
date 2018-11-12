@@ -1,6 +1,7 @@
 li.comment {
   display: flex;
-  .comment__user-avatar {
+  .comment__user,
+  .comments__user {
     @include userAvatar;
     margin-right: 25px;
   }

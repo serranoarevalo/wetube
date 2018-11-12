@@ -53,7 +53,9 @@ const videoDetail = async (req, res) => {
   } = req;
   try {
     const video = await Video.findOne({ _id: id }).populate("author");
-    const comments = await Comment.find({ video: id }).populate("author");
+    const comments = await Comment.find({ video: id })
+      .populate("author")
+      .sort({ createdAt: -1 });
     const related = await Video.find({ _id: { $ne: id } }).populate("author");
     let isAuthor = false;
     if (user && video) {

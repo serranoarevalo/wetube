@@ -1,7 +1,7 @@
 mixin comment(comment = {})
     li.comment
         a(href=`/user/${comment.authorId}`)
-            .comment__user-avatar(style={'background-image':`url(${comment.authorAvatar})`})
+            .comment__user(style={'background-image':`url(${comment.authorAvatar})`})
         .comment__user-data
             .comment__title
                 a(href=`/user/${comment.authorId}`)

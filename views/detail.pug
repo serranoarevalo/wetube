@@ -26,13 +26,15 @@ block content
                 if comments.length === 1
                     span.comments__count 1 video
                 else
-                    span.comments__count #{comments.length} comments
+                    span.comments__count
+                        span#js-countNumber #{comments.length}
+                        span  comments
                 if user
                     form.comments__form#js-commentForm
                         .comments__user(style={'background-image':`url(${user.avatarUrl})`})
                         input.comments__textarea(placeholder="Add a comment", type="text")
                         
-                    ul.comments__list
+                    ul.comments__list#js-commentList
                         each comment in comments
                             +comment({
                                 username: comment.author.name,
